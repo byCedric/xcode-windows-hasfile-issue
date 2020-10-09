@@ -1,0 +1,26 @@
+---
+name: Example
+on: [push]
+jobs:
+  demonstrate:
+    name: Demonstrate addFile behavior
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+    steps:
+      - name: Setup repository
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Run scenario with workaround
+        run: node scenario-good.js
+      - name: run scenario without workaround
+        run: node scenario-bad.js
