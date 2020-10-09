@@ -20,5 +20,5 @@ const file = project.hasFile(SPLASH_SCREEN_PATH);
 if (file) {
   console.log('Splash screen file located', file);
 } else {
-  throw new Errr('Splash Screen file does not exists');
+  throw new Error('Splash Screen file does not exists');
 }
